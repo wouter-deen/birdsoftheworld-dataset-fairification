@@ -1,7 +1,7 @@
 import csv
 
 # Replace with your actual file names
-input_file = 'birdsoftheworld-unprocessed.csv' 
+input_file = 'Birdsoftheworld.csv' 
 output_file = 'bird_sightings_fixed.csv'
 
 # The anchor values we will look for to identify the sex column
