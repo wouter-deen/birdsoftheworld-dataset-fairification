@@ -1,9 +1,10 @@
 import csv
 import re
+from pathlib import Path
 
-# Replace with your actual file names
-input_file = "Birdsoftheworld.csv"
-output_file = "Birdsoftheworld-preprocessed.csv"
+project_dir = Path(__file__).resolve().parent
+input_file = project_dir / "Birdsoftheworld.csv"
+output_file = project_dir / "outputs" / "Birdsoftheworld-preprocessed.csv"
 
 # The anchor values we will look for to identify the sex column
 valid_sexes = ["Male", "Female", "Unknown"]
@@ -40,6 +41,8 @@ def clean_text(text):
     text = re.sub(r"\s+", " ", text)
     return text.strip().strip(",").strip()
 
+
+output_file.parent.mkdir(parents=True, exist_ok=True)
 
 with (
     open(input_file, "r", encoding="utf-8") as infile,
