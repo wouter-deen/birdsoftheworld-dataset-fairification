@@ -2,9 +2,10 @@ import csv
 import re
 from pathlib import Path
 
-project_dir = Path(__file__).resolve().parent
-input_file = project_dir / "Birdsoftheworld.csv"
-output_file = project_dir / "outputs" / "Birdsoftheworld-preprocessed.csv"
+project_dir = Path(__file__).resolve().parent.parent
+metadata_dir = project_dir / "metadata"
+input_file = metadata_dir / "Birdsoftheworld.csv"
+output_file = metadata_dir / "outputs" / "Birdsoftheworld-preprocessed.csv"
 
 # The anchor values we will look for to identify the sex column
 valid_sexes = ["Male", "Female", "Unknown"]

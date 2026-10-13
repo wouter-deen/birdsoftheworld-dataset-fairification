@@ -2,9 +2,15 @@
 
 Cleans the messy `Birdsoftheworld.csv` into a structured dataset.
 
+```
+data/         final RDF dataset (.ttl) will live here
+metadata/     source CSV and generated intermediate outputs
+preprocessing/ preprocessing and feature-extraction scripts
+```
+
 ## Preprocessing
 
-`preprocessing.py` reads `Birdsoftheworld.csv` and writes `outputs/Birdsoftheworld-preprocessed.csv` with the columns:
+`preprocessing/preprocessing.py` reads `metadata/Birdsoftheworld.csv` and writes `metadata/outputs/Birdsoftheworld-preprocessed.csv` with the columns:
 
 `species, location, time, description of bird, sex, feather color`
 
@@ -20,13 +26,13 @@ Because the source file is not valid CSV, the script repairs each row before spl
 Run with:
 
 ```bash
-python3 preprocessing.py
+python3 preprocessing/preprocessing.py
 ```
 
 ## Description feature extraction
 
-`extract_description_features.py` reads `outputs/Birdsoftheworld-preprocessed.csv` and
-writes `outputs/Birdsoftheworld-features.csv`, retaining the input columns and appending
+`preprocessing/extract_description_features.py` reads `metadata/outputs/Birdsoftheworld-preprocessed.csv` and
+writes `metadata/outputs/Birdsoftheworld-features.csv`, retaining the input columns and appending
 one categorical column per _observed_ trait type (such as `size`,
 `plumage_color`, `head_color`, `bill_shape`, and `vocalization`). Cells contain
 normalized values such as `small`, `white`, or `hooked`, not true/false flags.
@@ -36,13 +42,13 @@ Split on `|` before ontology mapping. A blank is unknown, not a negative
 assertion. The original description stays available for review.
 
 ```bash
-python3 extract_description_features.py --report
-python3 -m unittest test_extract_description_features.py
+python3 preprocessing/extract_description_features.py --report
+python3 -m unittest discover -s preprocessing
 ```
 
-The report is saved to `outputs/description-feature-analysis.md` and contains row
+The report is saved to `metadata/outputs/description-feature-analysis.md` and contains row
 frequencies and the number of distinct species mentioning each column/value
 pair. Neither the feature names nor frequencies imply validated ontology mappings
-or biological prevalence. Defaults write into `outputs/`; explicit `--output`
+or biological prevalence. Defaults write into `metadata/outputs/`; explicit `--output`
 and `--report <path>` arguments can override those destinations. The observed
 feature columns may change for different inputs.

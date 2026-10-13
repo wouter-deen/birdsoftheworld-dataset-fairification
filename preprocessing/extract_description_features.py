@@ -15,8 +15,9 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-OUTPUTS = HERE / "outputs"
+PROJECT = Path(__file__).resolve().parent.parent
+METADATA = PROJECT / "metadata"
+OUTPUTS = METADATA / "outputs"
 DEFAULT_INPUT = OUTPUTS / "Birdsoftheworld-preprocessed.csv"
 DEFAULT_OUTPUT = OUTPUTS / "Birdsoftheworld-features.csv"
 DEFAULT_REPORT = OUTPUTS / "description-feature-analysis.md"
@@ -291,7 +292,8 @@ def categorical_values(features):
 
 
 def report_text(
-    rows, feature_sets, columns, source_name="outputs/Birdsoftheworld-preprocessed.csv"
+    rows, feature_sets, columns,
+    source_name="metadata/outputs/Birdsoftheworld-preprocessed.csv",
 ):
     n = len(rows)
     species = {row["species"] for row in rows}
@@ -421,8 +423,9 @@ def report_text(
             "```",
             "",
             (
-                "Output: `outputs/Birdsoftheworld-features.csv`; this report is written "
-                "to `outputs/description-feature-analysis.md`. Columns are generated from "
+                "Output: `metadata/outputs/Birdsoftheworld-features.csv`; this report is "
+                "written to `metadata/outputs/description-feature-analysis.md`. Columns "
+                "are generated from "
                 "features observed in the input and sorted alphabetically, so a "
                 "different input may produce a different set of columns. "
                 "No vocabulary or ontology URIs are assigned yet; the column names "
@@ -443,7 +446,7 @@ def main():
         nargs="?",
         type=Path,
         const=DEFAULT_REPORT,
-        help="write a Markdown analysis (default: outputs/description-feature-analysis.md)",
+        help="write a Markdown analysis (default: metadata/outputs/description-feature-analysis.md)",
     )
     args = parser.parse_args()
     with args.input.open(newline="", encoding="utf-8-sig") as infile:
@@ -467,8 +470,8 @@ def main():
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         source = (
-            str(args.input.relative_to(HERE))
-            if args.input.is_relative_to(HERE)
+            str(args.input.relative_to(PROJECT))
+            if args.input.is_relative_to(PROJECT)
             else str(args.input)
         )
         args.report.write_text(

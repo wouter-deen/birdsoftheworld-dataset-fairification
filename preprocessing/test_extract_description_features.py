@@ -77,11 +77,13 @@ class DescriptionFeatureTests(unittest.TestCase):
     def test_pipeline_defaults_write_to_outputs_from_another_directory(self):
         with tempfile.TemporaryDirectory() as directory:
             project = Path(directory)
+            (project / "preprocessing").mkdir()
+            (project / "metadata").mkdir()
             for script in ("preprocessing.py", "extract_description_features.py"):
                 shutil.copyfile(
-                    Path(__file__).resolve().parent / script, project / script
+                    Path(__file__).resolve().parent / script, project / "preprocessing" / script
                 )
-            (project / "Birdsoftheworld.csv").write_text(
+            (project / "metadata" / "Birdsoftheworld.csv").write_text(
                 "species,location,time,description of bird,sex,feather color\n"
                 "American Robin,New York City,15-06-2023 08:30,"
                 "A small bird with an orange breast,Unknown,Brown\n",
@@ -94,7 +96,7 @@ class DescriptionFeatureTests(unittest.TestCase):
                 ("extract_description_features.py", "--report"),
             ):
                 result = run(
-                    [sys.executable, str(project / args[0]), *args[1:]],
+                    [sys.executable, str(project / "preprocessing" / args[0]), *args[1:]],
                     cwd=elsewhere,
                     capture_output=True,
                     text=True,
@@ -102,17 +104,17 @@ class DescriptionFeatureTests(unittest.TestCase):
                 )
                 self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue(
-                (project / "outputs" / "Birdsoftheworld-preprocessed.csv").exists()
+                (project / "metadata" / "outputs" / "Birdsoftheworld-preprocessed.csv").exists()
             )
             self.assertTrue(
-                (project / "outputs" / "Birdsoftheworld-features.csv").exists()
+                (project / "metadata" / "outputs" / "Birdsoftheworld-features.csv").exists()
             )
             self.assertTrue(
-                (project / "outputs" / "description-feature-analysis.md").exists()
+                (project / "metadata" / "outputs" / "description-feature-analysis.md").exists()
             )
             self.assertFalse((project / "Birdsoftheworld-features.csv").exists())
             self.assertFalse((project / "Birdsoftheworld-preprocessed.csv").exists())
-            with (project / "outputs" / "Birdsoftheworld-features.csv").open(
+            with (project / "metadata" / "outputs" / "Birdsoftheworld-features.csv").open(
                 newline="", encoding="utf-8"
             ) as handle:
                 self.assertEqual(next(csv.DictReader(handle))["size"], "small")
