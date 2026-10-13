@@ -1,6 +1,6 @@
 # Bird description feature analysis
 
-Source: `metadata/outputs/Birdsoftheworld-preprocessed.csv` (1,310 rows, 534 species; 1,310 nonempty descriptions).
+Source: `preprocessing/outputs/Birdsoftheworld-preprocessed.csv` (1,310 rows, 534 species; 1,310 nonempty descriptions).
 
 ## Method
 
@@ -351,4 +351,4 @@ These are all observed values within the categorical columns. Counts include dup
 python3 extract_description_features.py --report
 ```
 
-Output: `metadata/outputs/Birdsoftheworld-features.csv`; this report is written to `metadata/outputs/description-feature-analysis.md`. Columns are generated from features observed in the input and sorted alphabetically, so a different input may produce a different set of columns. No vocabulary or ontology URIs are assigned yet; the column names are candidate concepts for later mapping.
+Output: `preprocessing/outputs/Birdsoftheworld-features.csv`; this report is written to `preprocessing/outputs/description-feature-analysis.md`. Columns are generated from features observed in the input and sorted alphabetically, so a different input may produce a different set of columns. No vocabulary or ontology URIs are assigned yet; the column names are candidate concepts for later mapping.

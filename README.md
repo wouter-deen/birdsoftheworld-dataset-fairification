@@ -4,13 +4,14 @@ Cleans the messy `Birdsoftheworld.csv` into a structured dataset.
 
 ```
 data/         final RDF dataset (.ttl) will live here
-metadata/     source CSV and generated intermediate outputs
-preprocessing/ preprocessing and feature-extraction scripts
+metadata/     metadata ttl and its SHACL schema will live here
+preprocessing/ original CSV, preprocessing and feature-extraction scripts,
+              and generated intermediate outputs
 ```
 
 ## Preprocessing
 
-`preprocessing/preprocessing.py` reads `metadata/Birdsoftheworld.csv` and writes `metadata/outputs/Birdsoftheworld-preprocessed.csv` with the columns:
+`preprocessing/preprocessing.py` reads `preprocessing/Birdsoftheworld.csv` and writes `preprocessing/outputs/Birdsoftheworld-preprocessed.csv` with the columns:
 
 `species, location, time, description of bird, sex, feather color`
 
@@ -31,8 +32,8 @@ python3 preprocessing/preprocessing.py
 
 ## Description feature extraction
 
-`preprocessing/extract_description_features.py` reads `metadata/outputs/Birdsoftheworld-preprocessed.csv` and
-writes `metadata/outputs/Birdsoftheworld-features.csv`, retaining the input columns and appending
+`preprocessing/extract_description_features.py` reads `preprocessing/outputs/Birdsoftheworld-preprocessed.csv` and
+writes `preprocessing/outputs/Birdsoftheworld-features.csv`, retaining the input columns and appending
 one categorical column per _observed_ trait type (such as `size`,
 `plumage_color`, `head_color`, `bill_shape`, and `vocalization`). Cells contain
 normalized values such as `small`, `white`, or `hooked`, not true/false flags.
@@ -46,9 +47,9 @@ python3 preprocessing/extract_description_features.py --report
 python3 -m unittest discover -s preprocessing
 ```
 
-The report is saved to `metadata/outputs/description-feature-analysis.md` and contains row
+The report is saved to `preprocessing/outputs/description-feature-analysis.md` and contains row
 frequencies and the number of distinct species mentioning each column/value
 pair. Neither the feature names nor frequencies imply validated ontology mappings
-or biological prevalence. Defaults write into `metadata/outputs/`; explicit `--output`
+or biological prevalence. Defaults write into `preprocessing/outputs/`; explicit `--output`
 and `--report <path>` arguments can override those destinations. The observed
 feature columns may change for different inputs.

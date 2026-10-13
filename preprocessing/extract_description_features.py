@@ -15,9 +15,9 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-PROJECT = Path(__file__).resolve().parent.parent
-METADATA = PROJECT / "metadata"
-OUTPUTS = METADATA / "outputs"
+HERE = Path(__file__).resolve().parent
+PROJECT = HERE.parent
+OUTPUTS = HERE / "outputs"
 DEFAULT_INPUT = OUTPUTS / "Birdsoftheworld-preprocessed.csv"
 DEFAULT_OUTPUT = OUTPUTS / "Birdsoftheworld-features.csv"
 DEFAULT_REPORT = OUTPUTS / "description-feature-analysis.md"
@@ -293,7 +293,7 @@ def categorical_values(features):
 
 def report_text(
     rows, feature_sets, columns,
-    source_name="metadata/outputs/Birdsoftheworld-preprocessed.csv",
+    source_name="preprocessing/outputs/Birdsoftheworld-preprocessed.csv",
 ):
     n = len(rows)
     species = {row["species"] for row in rows}
@@ -423,9 +423,9 @@ def report_text(
             "```",
             "",
             (
-                "Output: `metadata/outputs/Birdsoftheworld-features.csv`; this report is "
-                "written to `metadata/outputs/description-feature-analysis.md`. Columns "
-                "are generated from "
+                "Output: `preprocessing/outputs/Birdsoftheworld-features.csv`; this report "
+                "is written to `preprocessing/outputs/description-feature-analysis.md`. "
+                "Columns are generated from "
                 "features observed in the input and sorted alphabetically, so a "
                 "different input may produce a different set of columns. "
                 "No vocabulary or ontology URIs are assigned yet; the column names "
@@ -446,7 +446,7 @@ def main():
         nargs="?",
         type=Path,
         const=DEFAULT_REPORT,
-        help="write a Markdown analysis (default: metadata/outputs/description-feature-analysis.md)",
+        help="write a Markdown analysis (default: preprocessing/outputs/description-feature-analysis.md)",
     )
     args = parser.parse_args()
     with args.input.open(newline="", encoding="utf-8-sig") as infile:

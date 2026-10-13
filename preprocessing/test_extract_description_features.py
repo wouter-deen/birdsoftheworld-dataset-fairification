@@ -78,12 +78,11 @@ class DescriptionFeatureTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             project = Path(directory)
             (project / "preprocessing").mkdir()
-            (project / "metadata").mkdir()
             for script in ("preprocessing.py", "extract_description_features.py"):
                 shutil.copyfile(
                     Path(__file__).resolve().parent / script, project / "preprocessing" / script
                 )
-            (project / "metadata" / "Birdsoftheworld.csv").write_text(
+            (project / "preprocessing" / "Birdsoftheworld.csv").write_text(
                 "species,location,time,description of bird,sex,feather color\n"
                 "American Robin,New York City,15-06-2023 08:30,"
                 "A small bird with an orange breast,Unknown,Brown\n",
@@ -104,17 +103,17 @@ class DescriptionFeatureTests(unittest.TestCase):
                 )
                 self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue(
-                (project / "metadata" / "outputs" / "Birdsoftheworld-preprocessed.csv").exists()
+                (project / "preprocessing" / "outputs" / "Birdsoftheworld-preprocessed.csv").exists()
             )
             self.assertTrue(
-                (project / "metadata" / "outputs" / "Birdsoftheworld-features.csv").exists()
+                (project / "preprocessing" / "outputs" / "Birdsoftheworld-features.csv").exists()
             )
             self.assertTrue(
-                (project / "metadata" / "outputs" / "description-feature-analysis.md").exists()
+                (project / "preprocessing" / "outputs" / "description-feature-analysis.md").exists()
             )
             self.assertFalse((project / "Birdsoftheworld-features.csv").exists())
             self.assertFalse((project / "Birdsoftheworld-preprocessed.csv").exists())
-            with (project / "metadata" / "outputs" / "Birdsoftheworld-features.csv").open(
+            with (project / "preprocessing" / "outputs" / "Birdsoftheworld-features.csv").open(
                 newline="", encoding="utf-8"
             ) as handle:
                 self.assertEqual(next(csv.DictReader(handle))["size"], "small")
