@@ -14,7 +14,7 @@
     dct:creator [
         a foaf:Person, foaf:Agent ;
         foaf:name "Quirijn Hoenink"
-    ] , [
+    ], [
         a foaf:Person, foaf:Agent ;
         foaf:name "Wouter Deen"
     ] ;
@@ -24,6 +24,16 @@
     dct:spatial <https://sws.geonames.org/6295630/> ;
     dcat:landingPage <https://github.com/wouter-deen/birdsoftheworld-dataset-fairification> ;
     dcat:distribution [
+        a dcat:Distribution ;
+        dct:title "FAIRified bird observations (RDF/Turtle)" ;
+        dcat:downloadURL <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/data/bird-observations.ttl> ;
+        dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle>
+    ], [
+        a dcat:Distribution ;
+        dct:title "Processed bird observations (CSV)" ;
+        dcat:downloadURL <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/data/bird-observations.csv> ;
+        dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv>
+    ], [
         a dcat:Distribution ;
         dct:title "FAIRified bird trait observations (RDF/Turtle)" ;
         dcat:downloadURL <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/data/bird-trait-observations.ttl> ;
