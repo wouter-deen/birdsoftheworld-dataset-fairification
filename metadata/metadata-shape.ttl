@@ -121,6 +121,12 @@
         sh:description "IANA media type IRI, e.g., text/turtle" ;
         sh:nodeKind sh:IRI ; sh:maxCount 1 ;
         sh:order 1 ; dash:editor dash:URIEditor
+    ] ;
+    sh:property [
+        sh:path dcat:accessURL ; sh:name "Access URL" ;
+        sh:description "Format-independent access URL supporting content negotiation" ;
+        sh:nodeKind sh:IRI ; sh:maxCount 1 ;
+        sh:order 2 ; dash:editor dash:URIEditor
     ] .
 
 :PeriodShape a sh:NodeShape ;

@@ -4,7 +4,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
-<https://github.com/wouter-deen/birdsoftheworld-dataset-fairification>
+<https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations>
     a dcat:Dataset ;
     dct:title "Birdsoftheworld-fairified" ;
     dct:description "FAIRified bird sighting and trait observations derived from the Birdsoftheworld-unprocessed dataset on Kaggle. The workflow includes repair of the source CSV, feature extraction from bird descriptions, normalization of trait values, semantic annotation and RDF transformation." ;
@@ -26,22 +26,26 @@
     dcat:distribution [
         a dcat:Distribution ;
         dct:title "FAIRified bird observations (RDF/Turtle)" ;
-        dcat:downloadURL <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/data/bird-observations.ttl> ;
+        dcat:accessURL <https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations/observations> ;
+        dcat:downloadURL <https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations/observations.ttl> ;
         dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle>
     ], [
         a dcat:Distribution ;
         dct:title "Processed bird observations (CSV)" ;
-        dcat:downloadURL <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/data/bird-observations.csv> ;
+        dcat:accessURL <https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations/observations> ;
+        dcat:downloadURL <https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations/observations.csv> ;
         dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv>
     ], [
         a dcat:Distribution ;
         dct:title "FAIRified bird trait observations (RDF/Turtle)" ;
-        dcat:downloadURL <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/data/bird-trait-observations.ttl> ;
+        dcat:accessURL <https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations/traits> ;
+        dcat:downloadURL <https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations/traits.ttl> ;
         dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle>
     ], [
         a dcat:Distribution ;
         dct:title "Processed bird trait observations (CSV)" ;
-        dcat:downloadURL <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/data/bird-trait-observations.csv> ;
+        dcat:accessURL <https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations/traits> ;
+        dcat:downloadURL <https://w3id.org/FAIR-course-UT/2026/group11/dataset/bird-observations/traits.csv> ;
         dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv>
     ] ;
     dcat:contactPoint [
