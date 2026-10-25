@@ -1,0 +1,49 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec> a dcat:Resource,
+    dcat:Distribution;
+  dcterms:description """The Bird Sightings Dataset is a comprehensive collection of bird sightings recorded across various geographical locations on Earth. The dataset includes information on different bird species, their locations, dates, and times of sighting, as well as descriptions of the birds. Additional details such as the sex of the birds and their feather colors are also provided when available.
+
+This dataset serves as a valuable resource for ornithologists, birdwatchers, researchers, and anyone interested in studying avian biodiversity and distribution patterns. The dataset is presented in CSV format, allowing for easy integration and analysis in various data processing tools and applications.""";
+  dcterms:hasVersion "1";
+  dcterms:isPartOf <http://localhost/dataset/3ea265fa-07df-4d6d-aee1-927114903eed>;
+  dcterms:license <https://opendatacommons.org/licenses/odbl/1-0/>;
+  dcterms:publisher [ a foaf:Agent;
+      foaf:name "Anoop Johny"
+    ];
+  dcterms:title "Original Birdsoftheworld dataset (CSV)";
+  dcat:accessURL <https://doi.org/10.34740/kaggle/dsv/6119827>;
+  dcat:downloadURL <https://w3id.org/FAIR-course-UT/2025-2026/group11/original.csv>;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv>;
+  <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec#identifier>;
+  <http://www.w3.org/2000/01/rdf-schema#label> "Original Birdsoftheworld dataset (CSV)";
+  dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en>;
+  dcterms:accessRights <http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec#accessRights>;
+  <http://semanticscience.org/resource/SIO_000628> <http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec/metrics/445c0a70d1e214e545b261559e2842f4>,
+    <http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec/metrics/5d27e854a9e78eb3f663331cd47cdc13>;
+  <https://w3id.org/fdp/fdp-o#metadataIssued> "2026-10-25T15:10:03.22739055Z"^^xsd:dateTime;
+  <https://w3id.org/fdp/fdp-o#metadataModified> "2026-10-25T15:10:03.22739055Z"^^xsd:dateTime;
+  dcterms:conformsTo <http://localhost/profile/02c649de-c579-43bb-b470-306abdc808c7> .
+
+<http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec#identifier> a
+    <http://purl.org/spar/datacite/Identifier>;
+  dcterms:identifier "http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec" .
+
+<http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec#accessRights>
+  a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
+
+<http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec/metrics/445c0a70d1e214e545b261559e2842f4>
+  <http://semanticscience.org/resource/SIO_000332> <https://www.ietf.org/rfc/rfc3986.txt>;
+  <http://semanticscience.org/resource/SIO_000628> <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec/metrics/5d27e854a9e78eb3f663331cd47cdc13>
+  <http://semanticscience.org/resource/SIO_000332> <https://www.wikidata.org/wiki/Q8777>;
+  <http://semanticscience.org/resource/SIO_000628> <https://www.wikidata.org/wiki/Q8777> .
+
+<http://localhost/profile/02c649de-c579-43bb-b470-306abdc808c7> <http://www.w3.org/2000/01/rdf-schema#label>
+    "Distribution Profile" .

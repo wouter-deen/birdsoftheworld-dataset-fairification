@@ -1,0 +1,47 @@
+# Public W3ID derivative of fdp-exports/fdp-distribution-fairified.ttl.
+@prefix datacite: <http://purl.org/spar/datacite/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fdp: <https://w3id.org/fdp/fdp-o#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified> a dcat:Distribution,
+        dcat:Resource ;
+    rdfs:label "FAIRified Birdsoftheworld dataset (RDF/Turtle)" ;
+    dct:accessRights <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified#accessRights> ;
+    dct:conformsTo <https://w3id.org/FAIR-course-UT/2025-2026/group11/schema/distribution> ;
+    dct:description "Combined RDF representation of the FAIRified bird occurrences and derived trait observations, including their links." ;
+    dct:hasVersion "1.0.0" ;
+    dct:isPartOf <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset> ;
+    dct:language <http://id.loc.gov/vocabulary/iso639-1/en> ;
+    dct:license <https://opendatacommons.org/licenses/odbl/1-0/> ;
+    dct:publisher [ a foaf:Agent ;
+            foaf:name "University of Twente" ] ;
+    dct:title "FAIRified Birdsoftheworld dataset (RDF/Turtle)" ;
+    sio:SIO_000628 <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified#metric-445c0a70d1e214e545b261559e2842f4>,
+        <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified#metric-5d27e854a9e78eb3f663331cd47cdc13> ;
+    dcat:accessURL <https://github.com/wouter-deen/birdsoftheworld-dataset-fairification> ;
+    dcat:downloadURL <https://w3id.org/FAIR-course-UT/2025-2026/group11/data> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle> ;
+    prov:wasDerivedFrom <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/metadata/fdp-exports/fdp-distribution-fairified.ttl> ;
+    fdp:metadataIdentifier <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified#identifier> ;
+    fdp:metadataIssued "2026-10-25T15:11:12.026282179Z"^^xsd:dateTime ;
+    fdp:metadataModified "2026-10-25T15:11:12.026282179Z"^^xsd:dateTime .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified#accessRights> a dct:RightsStatement ;
+    dct:description "This resource has no access restriction" .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified#identifier> a datacite:Identifier ;
+    dct:identifier "https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified" .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified#metric-445c0a70d1e214e545b261559e2842f4> sio:SIO_000332 <https://www.ietf.org/rfc/rfc3986.txt> ;
+    sio:SIO_000628 <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified#metric-5d27e854a9e78eb3f663331cd47cdc13> sio:SIO_000332 <https://www.wikidata.org/wiki/Q8777> ;
+    sio:SIO_000628 <https://www.wikidata.org/wiki/Q8777> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/schema/distribution> rdfs:label "Distribution Profile" .

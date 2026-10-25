@@ -1,0 +1,69 @@
+# Public W3ID derivative of fdp-exports/fdp-dataset.ttl.
+@prefix datacite: <http://purl.org/spar/datacite/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fdp: <https://w3id.org/fdp/fdp-o#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset#distributions> a ldp:DirectContainer ;
+    dct:title "Distributions" ;
+    ldp:contains <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified>,
+        <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-original> ;
+    ldp:hasMemberRelation dcat:distribution ;
+    ldp:membershipResource <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset> a dcat:Dataset,
+        dcat:Resource ;
+    rdfs:label "Birdsoftheworld-fairified" ;
+    dct:accessRights "public" ;
+    dct:conformsTo <https://w3id.org/FAIR-course-UT/2025-2026/group11/schema/dataset> ;
+    dct:creator [ a foaf:Agent ;
+            foaf:name "Quirijn Hoenink" ],
+        [ a foaf:Agent ;
+            foaf:name "Wouter Deen" ] ;
+    dct:description "FAIRified bird sighting and trait observations derived from the Birdsoftheworld-unprocessed dataset on Kaggle. The workflow includes repair of the source CSV, feature extraction from bird descriptions, normalization of trait values, semantic annotation and RDF transformation." ;
+    dct:hasVersion "1.0.0" ;
+    dct:isPartOf <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/catalog> ;
+    dct:issued "2026-10-24T22:00:00Z"^^xsd:dateTime ;
+    dct:language <http://id.loc.gov/vocabulary/iso639-1/en> ;
+    dct:license <https://opendatacommons.org/licenses/odbl/1-0/> ;
+    dct:modified "2026-10-24T22:00:00Z"^^xsd:dateTime ;
+    dct:publisher [ a foaf:Agent ;
+            foaf:name "University of Twente" ] ;
+    dct:source <https://doi.org/10.34740/kaggle/dsv/6119827> ;
+    dct:spatial <https://sws.geonames.org/6295630/> ;
+    dct:temporal [ dcat:endDate "2023-07-09T14:10:00Z"^^xsd:dateTime ;
+            dcat:startDate "2001-03-17T12:40:00Z"^^xsd:dateTime ] ;
+    dct:title "Birdsoftheworld-fairified" ;
+    sio:SIO_000628 <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset#metric-445c0a70d1e214e545b261559e2842f4>,
+        <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset#metric-5d27e854a9e78eb3f663331cd47cdc13> ;
+    dcat:contactPoint [ vcard:fn "Wouter Deen" ;
+            vcard:hasEmail <mailto:s.w.deen@student.utwente.nl> ] ;
+    dcat:distribution <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-fairified>,
+        <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/distribution-original> ;
+    dcat:keyword "biodiversity",
+        "bird sightings",
+        "bird traits",
+        "phenotypes" ;
+    dcat:landingPage <https://github.com/wouter-deen/birdsoftheworld-dataset-fairification> ;
+    prov:wasDerivedFrom <https://raw.githubusercontent.com/wouter-deen/birdsoftheworld-dataset-fairification/main/metadata/fdp-exports/fdp-dataset.ttl> ;
+    fdp:metadataIdentifier <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset#identifier> ;
+    fdp:metadataIssued "2026-10-25T15:04:59.59952759Z"^^xsd:dateTime ;
+    fdp:metadataModified "2026-10-25T15:11:12.027184012Z"^^xsd:dateTime .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset#identifier> a datacite:Identifier ;
+    dct:identifier "https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset" .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset#metric-445c0a70d1e214e545b261559e2842f4> sio:SIO_000332 <https://www.ietf.org/rfc/rfc3986.txt> ;
+    sio:SIO_000628 <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset#metric-5d27e854a9e78eb3f663331cd47cdc13> sio:SIO_000332 <https://www.wikidata.org/wiki/Q8777> ;
+    sio:SIO_000628 <https://www.wikidata.org/wiki/Q8777> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/schema/dataset> rdfs:label "Dataset Profile" .

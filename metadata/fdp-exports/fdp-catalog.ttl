@@ -1,0 +1,52 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31> a dcat:Resource, dcat:Catalog;
+  dcterms:accessRights <http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31#accessRights>;
+  dcterms:conformsTo <http://localhost/profile/a0949e72-4466-4d53-8900-9436d1049a4b>,
+    <http://localhost/profile/a0949e72-4466-4d53-8900-9436d1049a4b>;
+  dcterms:description "Catalog containing the original Birdsoftheworld dataset and its FAIRified RDF representation.";
+  dcterms:hasVersion "1.0.0";
+  dcterms:isPartOf <http://localhost>;
+  dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en>;
+  dcterms:license <https://opendatacommons.org/licenses/odbl>;
+  dcterms:publisher [ a foaf:Agent;
+      foaf:name "University of Twente"
+    ];
+  dcterms:title "Group 11 - Birdsoftheworld";
+  <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31#identifier>;
+  <http://www.w3.org/2000/01/rdf-schema#label> " Group 11 â€” Birdsoftheworld";
+  <http://semanticscience.org/resource/SIO_000628> <http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31/metrics/445c0a70d1e214e545b261559e2842f4>,
+    <http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31/metrics/5d27e854a9e78eb3f663331cd47cdc13>;
+  dcterms:modified "2026-10-25T14:49:32.385932799Z"^^xsd:dateTime;
+  <https://w3id.org/fdp/fdp-o#metadataIssued> "2026-10-25T14:48:23.174174837Z"^^xsd:dateTime;
+  dcterms:issued "2026-10-25T14:48:23.174174837Z"^^xsd:dateTime;
+  dcat:dataset <http://localhost/dataset/3ea265fa-07df-4d6d-aee1-927114903eed>;
+  <https://w3id.org/fdp/fdp-o#metadataModified> "2026-10-25T15:11:12.027841887Z"^^xsd:dateTime .
+
+<http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31#accessRights> a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
+
+<http://localhost/dataset/> a ldp:DirectContainer, ldp:DirectContainer;
+  dcterms:title "Datasets", "Datasets";
+  ldp:hasMemberRelation dcat:dataset, dcat:dataset;
+  ldp:membershipResource <http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31>,
+    <http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31>;
+  ldp:contains <http://localhost/dataset/3ea265fa-07df-4d6d-aee1-927114903eed> .
+
+<http://localhost/profile/a0949e72-4466-4d53-8900-9436d1049a4b> <http://www.w3.org/2000/01/rdf-schema#label>
+    "Catalog Profile", "Catalog Profile" .
+
+<http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31#identifier> a <http://purl.org/spar/datacite/Identifier>;
+  dcterms:identifier "http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31" .
+
+<http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31/metrics/445c0a70d1e214e545b261559e2842f4>
+  <http://semanticscience.org/resource/SIO_000332> <https://www.ietf.org/rfc/rfc3986.txt>;
+  <http://semanticscience.org/resource/SIO_000628> <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<http://localhost/catalog/cbd5b9f3-9669-4431-a0aa-1c85eeb83c31/metrics/5d27e854a9e78eb3f663331cd47cdc13>
+  <http://semanticscience.org/resource/SIO_000332> <https://www.wikidata.org/wiki/Q8777>;
+  <http://semanticscience.org/resource/SIO_000628> <https://www.wikidata.org/wiki/Q8777> .

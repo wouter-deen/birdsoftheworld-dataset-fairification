@@ -1,0 +1,39 @@
+@prefix : <http://fairdatapoint.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+:DistributionShape a sh:NodeShape ;
+    rdfs:label "Bird data distribution metadata profile" ;
+    dct:description "A reusable DCAT metadata profile for downloadable representations of the bird dataset." ;
+    sh:targetClass dcat:Distribution ;
+    sh:property [
+        sh:path dct:title ; sh:name "Title" ;
+        sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:order 0 ; dash:editor dash:TextFieldEditor
+    ] ;
+    sh:property [
+        sh:path dct:description ; sh:name "Description" ;
+        sh:datatype xsd:string ; sh:maxCount 1 ;
+        sh:order 1 ; dash:editor dash:TextAreaEditor
+    ] ;
+    sh:property [
+        sh:path dcat:downloadURL ; sh:name "Download URL" ;
+        sh:nodeKind sh:IRI ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:order 2 ; dash:editor dash:URIEditor
+    ] ;
+    sh:property [
+        sh:path dcat:mediaType ; sh:name "Media type" ;
+        sh:description "IANA media type IRI, e.g., text/turtle" ;
+        sh:nodeKind sh:IRI ; sh:maxCount 1 ;
+        sh:order 3 ; dash:editor dash:URIEditor
+    ] ;
+    sh:property [
+        sh:path dcat:accessURL ; sh:name "Access URL" ;
+        sh:description "Landing page or access endpoint for the distribution" ;
+        sh:nodeKind sh:IRI ; sh:maxCount 1 ;
+        sh:order 4 ; dash:editor dash:URIEditor
+    ] .

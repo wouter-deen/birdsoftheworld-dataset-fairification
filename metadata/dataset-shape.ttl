@@ -5,7 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
 :GeneralinformationGroup a sh:PropertyGroup ; rdfs:label "General information" ; sh:order 0 .
@@ -16,49 +16,32 @@
 
 :BirdSightingsMetadataShape a sh:NodeShape ;
     rdfs:label "Bird sightings dataset metadata profile" ;
-    dct:description "A reusable DCAT metadata profile for datasets of bird sightings, including derived/FAIRified versions." ;
+    dct:description "Dataset-specific fields extending the shared FDP ResourceShape. Configure the parent through FDP's Extends setting; load resource-shape.ttl alongside this file for local validation." ;
     sh:targetClass dcat:Dataset ;
-    sh:property [
-        sh:path dct:title ; sh:name "Title" ;
-        sh:description "Human-readable dataset title" ;
-        sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
-        sh:order 0 ; dash:editor dash:TextFieldEditor ; sh:group :GeneralinformationGroup
-    ] ;
-    sh:property [
-        sh:path dct:description ; sh:name "Description" ;
-        sh:description "What the dataset contains and how it was prepared" ;
-        sh:datatype xsd:string ; sh:minCount 1 ;
-        sh:order 1 ; dash:editor dash:TextAreaEditor ; sh:group :GeneralinformationGroup
-    ] ;
+    sh:node :ResourceShape ;
     sh:property [
         sh:path dct:issued ; sh:name "Issued" ;
         sh:description "Date on which the dataset was issued (not the observation period)" ;
-        sh:datatype xsd:date ; sh:maxCount 1 ;
-        sh:order 2 ; dash:editor dash:DatePickerEditor ; sh:group :GeneralinformationGroup
+        sh:datatype xsd:dateTime ; sh:maxCount 1 ;
+        sh:order 2 ; dash:editor dash:DateTimePickerEditor ; sh:group :GeneralinformationGroup
     ] ;
     sh:property [
         sh:path dct:modified ; sh:name "Modified" ;
         sh:description "Last modification date of the published dataset" ;
-        sh:datatype xsd:date ; sh:maxCount 1 ;
-        sh:order 3 ; dash:editor dash:DatePickerEditor ; sh:group :GeneralinformationGroup
+        sh:datatype xsd:dateTime ; sh:maxCount 1 ;
+        sh:order 3 ; dash:editor dash:DateTimePickerEditor ; sh:group :GeneralinformationGroup
     ] ;
     sh:property [
         sh:path dcat:keyword ; sh:name "Keyword" ;
         sh:datatype xsd:string ;
         sh:order 4 ; dash:editor dash:TextFieldEditor ; sh:group :GeneralinformationGroup
     ] ;
-    sh:property [
-        sh:path dct:publisher ; sh:name "Publisher" ;
-        sh:description "Agent responsible for publishing the dataset" ;
-        sh:nodeKind sh:IRI ; sh:class foaf:Agent ;
-        sh:minCount 1 ; sh:maxCount 1 ;
-        sh:order 0 ; dash:editor dash:AutoCompleteEditor ; sh:group :ProvenanceGroup
-    ] ;
+
     sh:property [
         sh:path dct:creator ; sh:name "Creator" ;
         sh:description "Person or organization that created this dataset version" ;
-        sh:nodeKind sh:BlankNodeOrIRI ; sh:class foaf:Agent ;
-        sh:order 1 ; sh:group :ProvenanceGroup
+        sh:nodeKind sh:BlankNodeOrIRI ; sh:node :AgentShape ;
+        sh:order 1 ; dash:editor dash:BlankNodeEditor ; sh:group :ProvenanceGroup
     ] ;
     sh:property [
         sh:path dct:source ; sh:name "Source dataset" ;
@@ -66,12 +49,7 @@
         sh:nodeKind sh:IRI ; sh:maxCount 1 ;
         sh:order 2 ; dash:editor dash:URIEditor ; sh:group :ProvenanceGroup
     ] ;
-    sh:property [
-        sh:path dct:license ; sh:name "Licence" ;
-        sh:description "URI of the applicable reuse licence (verify against the source licence)" ;
-        sh:nodeKind sh:IRI ; sh:maxCount 1 ;
-        sh:order 4 ; dash:editor dash:URIEditor ; sh:group :ProvenanceGroup
-    ] ;
+
     sh:property [
         sh:path dct:accessRights ; sh:name "Access rights" ;
         sh:description "Access category (not a substitute for a reuse licence)" ;
@@ -86,9 +64,9 @@
     ] ;
     sh:property [
         sh:path dcat:distribution ; sh:name "Distribution" ;
-        sh:description "Actual downloadable representation(s) of the dataset" ;
-        sh:nodeKind sh:BlankNodeOrIRI ; sh:node :DistributionShape ;
-        sh:order 2 ; dash:editor dash:DetailsEditor ; sh:group :AccessGroup
+        sh:description "Links to separately described distribution records, managed as child resources in FDP" ;
+        sh:nodeKind sh:IRI ;
+        sh:order 2 ; sh:group :AccessGroup
     ] ;
     sh:property [
         sh:path dct:spatial ; sh:name "Spatial coverage" ;
@@ -101,44 +79,26 @@
         sh:description "Time period covered by the sightings (not the publication date)" ;
         sh:nodeKind sh:BlankNodeOrIRI ; sh:node :PeriodShape ;
         sh:maxCount 1 ; sh:order 1 ;
-        dash:editor dash:DetailsEditor ; sh:group :CoverageGroup
+        dash:editor dash:BlankNodeEditor ; sh:group :CoverageGroup
     ] ;
     sh:property [
         sh:path dcat:contactPoint ; sh:name "Contact point" ;
         sh:nodeKind sh:BlankNodeOrIRI ; sh:node :ContactShape ;
         sh:maxCount 1 ; sh:order 0 ;
-        dash:editor dash:DetailsEditor ; sh:group :ContactGroup
+        dash:editor dash:BlankNodeEditor ; sh:group :ContactGroup
     ] .
 
-:DistributionShape a sh:NodeShape ;
-    sh:property [
-        sh:path dcat:downloadURL ; sh:name "Download URL" ;
-        sh:nodeKind sh:IRI ; sh:minCount 1 ; sh:maxCount 1 ;
-        sh:order 0 ; dash:editor dash:URIEditor
-    ] ;
-    sh:property [
-        sh:path dcat:mediaType ; sh:name "Media type" ;
-        sh:description "IANA media type IRI, e.g., text/turtle" ;
-        sh:nodeKind sh:IRI ; sh:maxCount 1 ;
-        sh:order 1 ; dash:editor dash:URIEditor
-    ] ;
-    sh:property [
-        sh:path dcat:accessURL ; sh:name "Access URL" ;
-        sh:description "Format-independent access URL supporting content negotiation" ;
-        sh:nodeKind sh:IRI ; sh:maxCount 1 ;
-        sh:order 2 ; dash:editor dash:URIEditor
-    ] .
 
 :PeriodShape a sh:NodeShape ;
     sh:property [
         sh:path dcat:startDate ; sh:name "Coverage start" ;
-        sh:datatype xsd:date ; sh:maxCount 1 ; sh:order 0 ;
-        dash:editor dash:DatePickerEditor
+        sh:datatype xsd:dateTime ; sh:maxCount 1 ; sh:order 0 ;
+        dash:editor dash:DateTimePickerEditor
     ] ;
     sh:property [
         sh:path dcat:endDate ; sh:name "Coverage end" ;
-        sh:datatype xsd:date ; sh:maxCount 1 ; sh:order 1 ;
-        dash:editor dash:DatePickerEditor
+        sh:datatype xsd:dateTime ; sh:maxCount 1 ; sh:order 1 ;
+        dash:editor dash:DateTimePickerEditor
     ] .
 
 :ContactShape a sh:NodeShape ;
