@@ -1,0 +1,70 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ont: <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ont:anatomicalEntity a owl:ObjectProperty ;
+    rdfs:label "anatomical entity"@en ;
+    rdfs:comment "UBERON term for the body part the trait statement is about."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:isDefinedBy <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> .
+
+ont:anatomyMappingType a owl:DatatypeProperty ;
+    rdfs:label "anatomy mapping type"@en ;
+    rdfs:comment "How the UBERON term was chosen (exact, exact_synonym, broader_parent, strong_parent...)."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:isDefinedBy <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> ;
+    rdfs:range xsd:string .
+
+ont:mappingNote a owl:DatatypeProperty ;
+    rdfs:label "mapping note"@en ;
+    rdfs:comment "Curator note on the value mapping."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:isDefinedBy <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> ;
+    rdfs:range xsd:string .
+
+ont:sourceColumn a owl:DatatypeProperty ;
+    rdfs:label "source column"@en ;
+    rdfs:comment "Column of the source spreadsheet this statement was derived from."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:isDefinedBy <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> ;
+    rdfs:range xsd:string .
+
+ont:traitLabel a owl:DatatypeProperty ;
+    rdfs:label "trait label"@en ;
+    rdfs:comment "Human-readable trait category (color, size, shape...)."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:isDefinedBy <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> ;
+    rdfs:range xsd:string .
+
+ont:valueMappingType a owl:DatatypeProperty ;
+    rdfs:label "value mapping type"@en ;
+    rdfs:comment "How the value term was chosen: exact, synonym, broader, approximate, compound or none."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:isDefinedBy <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> ;
+    rdfs:range xsd:string .
+
+ont:valueTerm a owl:ObjectProperty ;
+    rdfs:label "value term"@en ;
+    rdfs:comment "Ontology term (PATO/NBO/ENVO/UBERON) for the observed trait value. Several values = compound value (e.g. grey-brown)."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:isDefinedBy <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> .
+
+ont:verbatimValue a owl:DatatypeProperty ;
+    rdfs:label "verbatim value"@en ;
+    rdfs:comment "Trait value exactly as written in the source data."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:isDefinedBy <https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> ;
+    rdfs:range xsd:string .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group11/ont> a owl:Ontology ;
+    dcterms:creator "Quirijn Hoenink",
+        "Stijn Wouter Deen" ;
+    dcterms:description "Mini ontology with the local properties used to describe trait observations (sosa:Observation) in the Birdsoftheworld-fairified dataset, where no suitable property exists in Darwin Core, SOSA, PATO or UBERON."@en ;
+    dcterms:license <https://opendatacommons.org/licenses/odbl/1-0/> ;
+    dcterms:title "Birdsoftheworld-fairified ontology"@en ;
+    rdfs:seeAlso <https://w3id.org/FAIR-course-UT/2025-2026/group11/metadata/dataset> ;
+    owl:versionInfo "1.0" .
+
