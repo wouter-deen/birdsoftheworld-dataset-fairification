@@ -45,7 +45,7 @@ The public Catalog, Dataset, and Distribution schema files are identical copies 
 The publication files use the guide's main prefix:
 
 ```text
-https://w3id.org/FAIR-course-UT/2025-2026/group11
+https://w3id.org/FAIR-course-UT/2026/group11
 ```
 
 Relative paths to the above prefix:

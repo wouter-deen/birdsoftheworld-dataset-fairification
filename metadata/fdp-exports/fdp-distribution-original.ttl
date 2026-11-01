@@ -17,7 +17,7 @@ This dataset serves as a valuable resource for ornithologists, birdwatchers, res
     ];
   dcterms:title "Original Birdsoftheworld dataset (CSV)";
   dcat:accessURL <https://doi.org/10.34740/kaggle/dsv/6119827>;
-  dcat:downloadURL <https://w3id.org/FAIR-course-UT/2025-2026/group11/original.csv>;
+  dcat:downloadURL <https://w3id.org/FAIR-course-UT/2026/group11/original.csv>;
   dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv>;
   <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost/distribution/14539714-1a97-4780-afcb-409ec59449ec#identifier>;
   <http://www.w3.org/2000/01/rdf-schema#label> "Original Birdsoftheworld dataset (CSV)";

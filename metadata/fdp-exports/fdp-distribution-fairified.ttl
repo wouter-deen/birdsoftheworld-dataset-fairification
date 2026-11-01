@@ -15,7 +15,7 @@
     ];
   dcterms:title "FAIRified Birdsoftheworld dataset (RDF/Turtle)";
   dcat:accessURL <https://github.com/wouter-deen/birdsoftheworld-dataset-fairification>;
-  dcat:downloadURL <https://w3id.org/FAIR-course-UT/2025-2026/group11/data>;
+  dcat:downloadURL <https://w3id.org/FAIR-course-UT/2026/group11/data>;
   dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle>;
   <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost/distribution/80163d45-a862-467c-bd04-1fea510c76c6#identifier>;
   <http://www.w3.org/2000/01/rdf-schema#label> "FAIRified Birdsoftheworld dataset (RDF/Turtle)";
